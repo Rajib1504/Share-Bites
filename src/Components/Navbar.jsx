@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <div>
       {" "}
-      <div className="navbar bg-[#f0f7fad7] w-full z-50 dark:bg-slate-900 dark:text-white p-0 justify-between items-center dark:border-b dark:pb-2">
+      <div className="navbar bg-[#f0f7fad7] w-full z-50  p-0 justify-between items-center ">
         {/* Left Section */}
         <div className="flex items-center">
           {/* Mobile Dropdown */}
@@ -45,7 +45,7 @@ const Navbar = () => {
             </button>
             <ul
               tabIndex={0}
-              className="menu menu-sm z-10 dropdown-content bg-[#272626e1] text-white dark:bg-[#272626e1] dark:text-white font-semibold rounded-box mt-3 w-36 p-2 shadow"
+              className="menu menu-sm z-10 dropdown-content bg-[#272626e1] text-white  font-semibold rounded-box mt-3 w-36 p-2 shadow"
             >
               {links}
             </ul>
@@ -82,7 +82,7 @@ const Navbar = () => {
             </div>
             <button
               // onClick={logOut}
-              className="flex justify-center items-center  px-2 w-18 h-10 sm:w-32 sm:h-12 text-blue-600 bg-transparent rounded-xl border-2 border-sky-400 hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+              className="flex justify-center items-center  btn btn-sm text-primary-sub bg-transparent rounded-xl border-2 border-primary-sub hover:bg-primary-sub hover:text-white transition duration-300 ease-in-outt shadow-md"
             >
               Log out
             </button>
@@ -91,13 +91,13 @@ const Navbar = () => {
           <div className="flex items-start gap-2">
             <Link
               to="/login"
-              className="flex justify-center items-center  btn  text-blue-600 bg-transparent rounded-xl border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+              className="flex justify-center items-center  btn btn-sm text-primary-main bg-transparent rounded-xl border-2 border-primary-main hover:bg-primary-main hover:text-white transition duration-300 ease-in-outt shadow-md"
             >
               Login
             </Link>
             <Link
               to="/register"
-              className="flex justify-center items-center  btn text-blue-600 bg-transparent rounded-xl border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition duration-300 ease-in-out"
+              className="flex justify-center items-center  btn btn-sm text-primary-main bg-transparent rounded-xl border-2 border-primary-main hover:bg-primary-main hover:text-white transition duration-300 ease-in-outt shadow-md"
             >
               Register
             </Link>
