@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthPovider";
 const Navbar = () => {
+  const { logOut, user } = useContext(AuthContext);
+
   const links = (
     <>
       <li>
@@ -20,11 +23,11 @@ const Navbar = () => {
     </>
   );
   return (
-    <div>
+    <div className="bg-[#f0f7fad7]">
       {" "}
-      <div className="navbar bg-[#f0f7fad7] w-full z-50  p-0 justify-between items-center ">
+      <div className="navbar lg:w-11/12 mx-auto w-full  z-50  p-0 justify-between items-center ">
         {/* Left Section */}
-        <div className="flex items-center">
+        <div className="flex  items-center">
           {/* Mobile Dropdown */}
           <div className="dropdown lg:hidden">
             <button tabIndex={0} className="btn btn-ghost">
@@ -67,42 +70,42 @@ const Navbar = () => {
         </div>
 
         {/* Right Section */}
-        <div className="flex items-center justify-between gap-4 ">
-          {/* {user && user?.email ? ( */}
-          <>
-            <div
-              className=" tooltip tooltip-left"
-              // data-tip={`${user?.displayName}`}
-            >
-              <img
-                // src={`${user?.photoURL}`}
-                alt="User Icon"
-                className="w-5 sm:w-10 rounded-full"
-              />
+        <div className="flex items-center mr-2 justify-between gap-4 ">
+          {user && user.email ? (
+            <>
+              <div
+                className=" tooltip tooltip-left"
+                data-tip={`${user?.displayName}`}
+              >
+                <img
+                  src={`${user?.photoURL}`}
+                  alt="User Icon"
+                  className="w-5 sm:w-10 rounded-full"
+                />
+              </div>
+              <button
+                onClick={logOut}
+                className="flex justify-center items-center  btn btn-sm text-primary-sub bg-transparent rounded-xl border-2 border-primary-sub hover:bg-primary-sub hover:text-white transition duration-300 ease-in-outt shadow-md"
+              >
+                Log out
+              </button>
+            </>
+          ) : (
+            <div className="flex items-start gap-2">
+              <Link
+                to="/login"
+                className="flex justify-center items-center  btn btn-sm text-primary-main bg-transparent rounded-xl border-2 border-primary-main hover:bg-primary-main hover:text-white transition duration-300 ease-in-outt shadow-md"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="flex justify-center items-center  btn btn-sm text-primary-main bg-transparent rounded-xl border-2 border-primary-main hover:bg-primary-main hover:text-white transition duration-300 ease-in-outt shadow-md"
+              >
+                Register
+              </Link>
             </div>
-            <button
-              // onClick={logOut}
-              className="flex justify-center items-center  btn btn-sm text-primary-sub bg-transparent rounded-xl border-2 border-primary-sub hover:bg-primary-sub hover:text-white transition duration-300 ease-in-outt shadow-md"
-            >
-              Log out
-            </button>
-          </>
-          {/* ) : ( */}
-          <div className="flex items-start gap-2">
-            <Link
-              to="/login"
-              className="flex justify-center items-center  btn btn-sm text-primary-main bg-transparent rounded-xl border-2 border-primary-main hover:bg-primary-main hover:text-white transition duration-300 ease-in-outt shadow-md"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="flex justify-center items-center  btn btn-sm text-primary-main bg-transparent rounded-xl border-2 border-primary-main hover:bg-primary-main hover:text-white transition duration-300 ease-in-outt shadow-md"
-            >
-              Register
-            </Link>
-          </div>
-          {/* )} */}
+          )}
         </div>
       </div>
     </div>

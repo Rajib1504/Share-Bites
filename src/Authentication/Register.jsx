@@ -1,9 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthPovider";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const { setUser, loader, registration, profileUpdate } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photoURL = form.photoURL.value;
+    //     console.log(name, email, password, photoURL);
+
+    const regx = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (!regx.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password should contain At least one Uppercase,one Lowercase and Minimum 6 characters",
+        timer: 2500,
+      });
+      return;
+    }
+    registration(email, password)
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        profileUpdate({ displayName: name, photoURL: photoURL });
+        Swal.fire({
+          title: "Success!",
+          text: "Registration successful",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorm = error.message;
+        console.log(errorm);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorm,
+        });
+      });
   };
   return (
     <>

@@ -1,9 +1,49 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthPovider";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { user, setUser, setLoader, loginUser } = useContext(AuthContext);
+  console.log(user);
   const handleLogin = (e) => {
-    e.target.preventDefault();
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    const regx = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
+    if (!regx.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password should contain At least one Uppercase,one Lowercase and Minimum 6 characters",
+        timer: 2500,
+      });
+      return;
+    }
+    loginUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        Swal.fire({
+          title: "Success!",
+          text: "Registration successful",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorm = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorm,
+        });
+      });
   };
   return (
     <>
