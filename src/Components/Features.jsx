@@ -11,7 +11,7 @@ const Features = () => {
   console.log(foods);
   useEffect(() => {
     axios
-      .get("http://localhost:9000/feturedFood")
+      .get("http://localhost:9000/food/feturedFood")
       .then((data) => setFoods(data.data));
   }, []);
   return (
@@ -63,7 +63,7 @@ const Features = () => {
               </span>
             </div>
             <Link
-              //     to={`/card/${card.Id}`}
+              to={`/food/${food?._id}`}
               className="btn btn-wide mx-auto px-4 py-2 mt-4 text-white bg-gradient-to-r from-[#f6a078] to-[#902f02] rounded-lg hover:from-[#f86300] hover:to-[#f4993f] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
             >
               View Details <GiFrayedArrow />
