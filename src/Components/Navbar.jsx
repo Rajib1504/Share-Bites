@@ -10,7 +10,7 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/availablefoods">Available Foods</NavLink>
+        <NavLink to="/sortedFoods">Available Foods</NavLink>
       </li>
 
       <li>
@@ -23,7 +23,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="bg-[#f0f7fad7]">
+    <div className="bg-primary-default">
       {" "}
       <div className="navbar lg:w-11/12 mx-auto w-full  z-50  p-0 justify-between items-center ">
         {/* Left Section */}
@@ -56,11 +56,11 @@ const Navbar = () => {
           {/* Logo */}
           <div className="flex items-center gap-1">
             <img
-              className="w-16 hidden sm:block "
-              src={`https://i.ibb.co/dtDLyHN/movie-logo-removebg-preview.png`}
+              className="w-14 hidden sm:block "
+              src={`https://i.ibb.co/dpSMLyd/Brown-Simple-Circle-Restaurant-Logo-photoaidcom-cropped.png`}
               alt="Logo"
             />
-            <h2 className="text-lg sm:text-2xl font-bold">Movie-world</h2>
+            <h2 className="text-lg sm:text-2xl font-bold">Share-Bites</h2>
           </div>
         </div>
 

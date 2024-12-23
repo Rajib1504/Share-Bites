@@ -7,7 +7,7 @@ export default {
         primary: {
           main: "#FF5200",
           sub: "#EB1700",
-          defautl: "#FEF1EE",
+          default: "#FEF1EE",
         },
       },
     },

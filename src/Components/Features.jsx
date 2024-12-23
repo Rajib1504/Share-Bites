@@ -1,16 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 import { GiFrayedArrow } from "react-icons/gi";
+import { GoArrowUpRight } from "react-icons/go";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { Link } from "react-router-dom";
-
-const AvailableFoods = () => {
+const Features = () => {
   const [foods, setFoods] = useState([]);
   console.log(foods);
   useEffect(() => {
     axios
-      .get("http://localhost:9000/sortedFoods")
+      .get("http://localhost:9000/feturedFood")
       .then((data) => setFoods(data.data));
   }, []);
   return (
@@ -47,8 +48,8 @@ const AvailableFoods = () => {
                 {food.status}
               </div>
               {/* <div className="rounded-full p-1 px-3 bg-primary-sub hover:bg-primary-main font-semibold">
-            {food.status}
-          </div> */}
+                {food.status}
+              </div> */}
             </div>
             {/* timings  */}
             <div className="flex justify-center flex-wrap-reverse items-center gap-2">
@@ -62,7 +63,7 @@ const AvailableFoods = () => {
               </span>
             </div>
             <Link
-              //   to={`/card/${card.Id}`}
+              //     to={`/card/${card.Id}`}
               className="btn btn-wide mx-auto px-4 py-2 mt-4 text-white bg-gradient-to-r from-[#f6a078] to-[#902f02] rounded-lg hover:from-[#f86300] hover:to-[#f4993f] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
             >
               View Details <GiFrayedArrow />
@@ -71,8 +72,14 @@ const AvailableFoods = () => {
         ))}
       </div>
       {/* show all button  */}
+      <Link
+        to={`/sortedFoods`}
+        className="btn btn-wide mx-auto px-4 py-2 mt-4 text-white bg-gradient-to-r from-[#FF5200] to-[#c06840] rounded-lg hover:from-[#b64009] hover:to-[#FF5200] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
+      >
+        Show All <GoArrowUpRight />
+      </Link>
     </div>
   );
 };
 
-export default AvailableFoods;
+export default Features;
