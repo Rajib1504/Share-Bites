@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthPovider";
 import Swal from "sweetalert2";
 
 const Register = () => {
-  const { setUser, loader, registration, profileUpdate } =
+  const { setUser, popupLogin, loader, registration, profileUpdate } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (e) => {
@@ -41,7 +41,29 @@ const Register = () => {
       })
       .catch((error) => {
         const errorm = error.message;
-        console.log(errorm);
+        // return errorm;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorm,
+        });
+      });
+  };
+  const handelGoogle = () => {
+    popupLogin()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        Swal.fire({
+          title: "Success!",
+          text: "Registration successful",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorm = error.message;
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -136,7 +158,7 @@ const Register = () => {
           {/* Google Login Button */}
           <button className="w-full px-4 py-2 mt-4 text-gray-700 border border-gray-300 rounded-lg hover:bg-gray-200 focus:outline-none">
             <div
-              //   onClick={handelGoogle}
+              onClick={handelGoogle}
               className="flex items-center gap-2 justify-center"
             >
               <img
