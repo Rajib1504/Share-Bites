@@ -4,10 +4,10 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 const BrowseUs = () => {
   return (
     <div>
-      <h1 className="text-3xl font-semibold text-center mb-8">
+      <h1 className="text-4xl font-semibold text-center my-8 hover:text-primary-main hover:underline">
         Browse Our Menu
       </h1>
-      <div className="border-2 border-red-500 w-full mx-auto md:w-full lg:w-5/6 flex flex-wrap justify-around p-4 items-center gap-6">
+      <div className=" w-full mx-auto md:w-full lg:w-5/6 flex flex-wrap justify-around p-4 items-center gap-6">
         {/* Breakfast */}
         <div className="w-64 rounded-lg flex flex-col items-center justify-center border-2 p-6">
           <div className="rounded-full w-12 mb-4">
@@ -66,7 +66,7 @@ const BrowseUs = () => {
 
         {/* Drinks */}
         <div className="w-64 rounded-lg flex flex-col items-center justify-center border-2 p-6">
-          <div className="rounded-full w-12 mb-4">
+          <div className="rounded-full w-10 mb-4">
             {/* img */}
             <div className="rounded-full bg-gray-200 p-2 flex items-center justify-center">
               <img

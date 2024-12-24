@@ -16,7 +16,12 @@ const Features = () => {
   }, []);
   return (
     <div className="">
-      Feature section {foods.length}
+      <h1 className="text-4xl font-semibold text-center my-8">
+        <p className=" hover:text-primary-main hover:underline">
+          {" "}
+          Feature section
+        </p>{" "}
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-full md:w-11/12 gap-3  ">
         {foods.map((food) => (
           //     <p >{food.food_name}</p>
@@ -74,7 +79,7 @@ const Features = () => {
       {/* show all button  */}
       <Link
         to={`/sortedFoods`}
-        className="btn btn-wide mx-auto px-4 py-2 mt-4 text-white bg-gradient-to-r from-[#FF5200] to-[#c06840] rounded-lg hover:from-[#b64009] hover:to-[#FF5200] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
+        className="btn btn-wide mx-auto px-4 py-2 my-8 text-white bg-gradient-to-r from-[#FF5200] to-[#c06840] rounded-lg hover:from-[#b64009] hover:to-[#FF5200] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
       >
         Show All <GoArrowUpRight />
       </Link>
