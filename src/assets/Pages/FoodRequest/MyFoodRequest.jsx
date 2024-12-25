@@ -1,7 +1,83 @@
-import React from "react";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../../Provider/AuthPovider";
 
 const MyFoodRequest = () => {
-  return <div>my food request</div>;
+  const [myFoods, setMyFoods] = useState([]);
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`http://localhost:9000/food/requests/${user?.email}`)
+        .then((result) => setMyFoods(result.data));
+    }
+  }, [user]);
+
+  return (
+    <div className="container mx-auto my-8 p-4">
+      <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+        My Food Requests ({myFoods.length})
+      </h2>
+      <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
+        <table className="table-auto w-full border-collapse">
+          <thead className="bg-gray-800 text-white">
+            <tr>
+              <th className="px-4 py-2 text-left">Image</th>
+              <th className="px-4 py-2 text-left">Details</th>
+              <th className="px-4 py-2 text-left">Donator</th>
+              <th className="px-4 py-2 text-left lg:text-center">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {myFoods.map((myFood) => (
+              <tr
+                key={myFood._id}
+                className="odd:bg-gray-50 even:bg-gray-100 hover:bg-gray-200"
+              >
+                <td className="px-4 py-4">
+                  <div className="avatar">
+                    <div className="mask mask-squircle h-12 w-12">
+                      <img src={myFood?.food_image} alt={myFood?.food_name} />
+                    </div>
+                  </div>
+                </td>
+                <td className="px-4 py-4">
+                  <div>
+                    <p className="font-semibold text-gray-800">
+                      {myFood?.food_name}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      {myFood?.pickup_location}
+                    </p>
+                  </div>
+                </td>
+                <td className="px-4 py-4">
+                  <div>
+                    <p className="font-medium text-gray-800">
+                      {myFood?.donator_name}
+                    </p>
+                    <p className="text-sm text-gray-500">
+                      <span>{myFood?.donator_email}</span> |{" "}
+                      <span>{myFood?.expiry_date}</span>
+                    </p>
+                  </div>
+                </td>
+                <td className="px-4 py-4 text-center">
+                  <span className="px-3 py-1 rounded-full text-white bg-orange-500">
+                    {myFood?.food_status || "N/A"}
+                  </span>
+                  <p className="text-sm text-gray-500 mt-2">
+                    {myFood?.request_date}
+                  </p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 };
 
 export default MyFoodRequest;
