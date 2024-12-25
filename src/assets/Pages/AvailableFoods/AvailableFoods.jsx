@@ -41,6 +41,7 @@ const AvailableFoods = () => {
                 <div className="flex justify-center items-center gap-2">
                   <p className="font-bold text-primary-main">Quantity:</p>
                   <p> {food.quantity}</p>
+                  <p> {food.quantity_type}</p>
                 </div>
               </div>
               <div className="rounded-full p-1 px-3 bg-green-500 hover:bg-green-600 font-semibold">

@@ -2,7 +2,7 @@ import React from "react";
 
 const HealthyFoodSection = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center mx-auto m-8 rounded-xl w-full md:w-11/12 lg:w-11/12  justify-center bg-primary-default py-12 px-6">
+    <div className="flex flex-col md:flex-row items-center mx-auto m-8 rounded-xl w-full   justify-center bg-primary-default py-12 px-6">
       {/* Image Section */}
       <div className="md:w-1/2 w-full flex justify-center">
         <img

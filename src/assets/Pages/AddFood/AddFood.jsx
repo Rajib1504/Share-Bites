@@ -13,6 +13,7 @@ const AddFood = () => {
     const food_image = form.food_image.value;
     const status = form.status.value;
     const quantity = form.quantity.value;
+    const quantity_type = form.quantity_type.value;
     const expiry_datetime = form.expiry_datetime.value;
     const pickup_location = form.pickup_location.value;
     const additional_notes = form.additional_notes.value;
@@ -25,6 +26,7 @@ const AddFood = () => {
       food_name,
       food_image,
       quantity,
+      quantity_type,
       pickup_location,
       status,
       expiry_datetime,
@@ -43,6 +45,7 @@ const AddFood = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        form.reset();
       })
       .catch((error) => {
         const errorm = error.message;
@@ -95,6 +98,42 @@ const AddFood = () => {
               required
             />
           </div>
+          {/* Food Quantity type*/}
+          <div>
+            <label
+              htmlFor="foodQuantityType"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Food Quantity Type
+            </label>
+            <input
+              type="text"
+              id="foodQuantityType"
+              name="quantity_type"
+              className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-orange-500"
+              placeholder="Enter food quantity type"
+              required
+            />
+          </div>
+        </div>
+        <div className="flex justify-between items-center gap-2">
+          {/* Food Image */}
+          <div>
+            <label
+              htmlFor="foodImage"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Food Image URL
+            </label>
+            <input
+              type="url"
+              id="foodImage"
+              name="food_image"
+              className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-orange-500"
+              placeholder="Enter image URL"
+              required
+            />
+          </div>
           {/* Pickup Location */}
           <div>
             <label
@@ -112,23 +151,6 @@ const AddFood = () => {
               required
             />
           </div>
-        </div>
-        {/* Food Image */}
-        <div>
-          <label
-            htmlFor="foodImage"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Food Image URL
-          </label>
-          <input
-            type="url"
-            id="foodImage"
-            name="food_image"
-            className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-orange-500"
-            placeholder="Enter image URL"
-            required
-          />
         </div>
         <div className="flex gap-4 items-center">
           {/* Status */}
