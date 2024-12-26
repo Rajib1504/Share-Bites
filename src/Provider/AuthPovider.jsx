@@ -34,14 +34,20 @@ const AuthPovider = ({ children }) => {
       if (currentUser?.email) {
         const user = { email: currentUser.email };
         axios
-          .post("http://localhost:9000/jwt", user, { withCredentials: true })
+          .post("https://zomato-server-delta.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then((result) => {
             console.log("login token", result.data);
             setLoader(false);
           });
       } else {
         axios
-          .post("http://localhost:9000/logout", {}, { withCredentials: true })
+          .post(
+            "https://zomato-server-delta.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
           .then((result) => {
             console.log("log Out", result.data);
             setLoader(false);

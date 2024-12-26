@@ -9,7 +9,12 @@ const MyFoodRequest = () => {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`http://localhost:9000/food/requests/${user?.email}`)
+        .get(
+          `https://zomato-server-delta.vercel.app/food/requests/${user?.email}`,
+          {
+            withCredentials: true,
+          }
+        )
         .then((result) => setMyFoods(result.data));
     }
   }, [user]);

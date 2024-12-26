@@ -36,7 +36,7 @@ const AddFood = () => {
 
     console.log(formData);
     axios
-      .post("http://localhost:9000/food", formData)
+      .post("https://zomato-server-delta.vercel.app/food", formData)
       .then((data) => {
         console.log(data.data);
         Swal.fire({

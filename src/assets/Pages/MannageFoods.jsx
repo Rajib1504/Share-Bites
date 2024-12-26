@@ -13,9 +13,12 @@ const MannageFoods = () => {
   // Fetching data
   useEffect(() => {
     axios
-      .get(`http://localhost:9000/food/mannage/${user?.email}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://zomato-server-delta.vercel.app/food/mannage/${user?.email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((result) => setAllFoods(result.data));
   }, [user?.email]);
 
@@ -46,7 +49,10 @@ const MannageFoods = () => {
       additional_notes: form.additional_notes.value,
     };
     axios
-      .put(`http://localhost:9000/food/update/${selectedFood._id}`, updatedData)
+      .put(
+        `https://zomato-server-delta.vercel.app/food/update/${selectedFood._id}`,
+        updatedData
+      )
       .then(() => {
         Swal.fire({
           title: "Success!",
@@ -77,10 +83,12 @@ const MannageFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:9000/myfood/${id}`).then(() => {
-          setAllFoods(allFoods.filter((food) => food._id !== id));
-          Swal.fire("Deleted!", "Your food has been deleted.", "success");
-        });
+        axios
+          .delete(`https://zomato-server-delta.vercel.app/myfood/${id}`)
+          .then(() => {
+            setAllFoods(allFoods.filter((food) => food._id !== id));
+            Swal.fire("Deleted!", "Your food has been deleted.", "success");
+          });
       }
     });
   };

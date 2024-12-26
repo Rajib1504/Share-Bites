@@ -14,9 +14,13 @@ const DetailsFood = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:9000/food/${id}`).then((data) => {
-      setFoods(data.data);
-    });
+    axios
+      .get(`https://zomato-server-delta.vercel.app/food/${id}`, {
+        withCredentials: true,
+      })
+      .then((data) => {
+        setFoods(data.data);
+      });
   }, [id]);
 
   const openModal = () => setIsModalOpen(true);
@@ -51,11 +55,15 @@ const DetailsFood = () => {
     console.log(formData);
     try {
       axios
-        .post(`http://localhost:9000/food/${id}`, formData)
+        .post(
+          `https://zomato-server-delta.vercel.app/food/${id}`,
+          { withCredentials: true },
+          formData
+        )
         .then((result) => console.log(result.data));
       if ("insertedId") {
         axios
-          .delete(`http://localhost:9000/food/${id}`)
+          .delete(`https://zomato-server-delta.vercel.app/food/${id}`)
           .then((result) => console.log(result.data));
 
         Swal.fire({

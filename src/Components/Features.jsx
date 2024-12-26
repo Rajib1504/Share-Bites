@@ -11,7 +11,7 @@ const Features = () => {
   console.log(foods);
   useEffect(() => {
     axios
-      .get("http://localhost:9000/foods/feturedFood")
+      .get("https://zomato-server-delta.vercel.app/foods/feturedFood")
       .then((data) => setFoods(data.data));
   }, []);
   return (
