@@ -11,7 +11,7 @@ const Features = () => {
   console.log(foods);
   useEffect(() => {
     axios
-      .get("http://localhost:9000/food/feturedFood")
+      .get("http://localhost:9000/foods/feturedFood")
       .then((data) => setFoods(data.data));
   }, []);
   return (

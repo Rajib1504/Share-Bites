@@ -12,7 +12,7 @@ const AddFood = () => {
     const food_name = form.food_name.value;
     const food_image = form.food_image.value;
     const status = form.status.value;
-    const quantity = form.quantity.value;
+    const quantity = parseInt(form.quantity.value);
     const quantity_type = form.quantity_type.value;
     const expiry_datetime = form.expiry_datetime.value;
     const pickup_location = form.pickup_location.value;
