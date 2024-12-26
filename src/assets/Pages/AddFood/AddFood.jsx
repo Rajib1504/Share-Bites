@@ -45,7 +45,7 @@ const AddFood = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
-        form.reset();
+        // form.reset();
       })
       .catch((error) => {
         const errorm = error.message;

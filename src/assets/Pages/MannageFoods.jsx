@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Provider/AuthPovider";
 import { FaPen, FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MannageFoods = () => {
   const { user } = useContext(AuthContext);
@@ -51,20 +52,52 @@ const MannageFoods = () => {
       additional_notes,
     };
     console.log(updatedData);
-
     axios
       .put(`http://localhost:9000/food/update/${selectedFood._id}`, updatedData)
       .then((result) => {
         console.log(result.data);
+        Swal.fire({
+          title: "Success!",
+          text: "Food Updation successful",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      })
+      .catch((error) => {
+        const errorm = error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: errorm,
+        });
       });
     closeModel();
-    //       .catch((error) => console.error("Error updating food:", error));
   };
+  // delete section;
   const handleDelete = (id) => {
-    //     console.log(id);
-    axios
-      .delete(`http://localhost:9000/myfood/${id}`)
-      .then((result) => console.log(result.data));
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      background: "#FEF1EE",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:9000/myfood/${id}`).then((result) => {
+          console.log(result.data);
+        });
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your food has been deleted.",
+          icon: "success",
+        });
+        const remaing = allFoods.filter((food) => id !== food._id);
+        setAllFoods(remaing);
+      }
+    });
   };
 
   return (
