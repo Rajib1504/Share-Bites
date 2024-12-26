@@ -14,8 +14,13 @@ const AvailableFoods = () => {
       .then((data) => setFoods(data.data));
   }, []);
   return (
-    <div className="">
-      Feature section {foods.length}
+    <div className=" mt-4">
+      <h2 className="text-2xl font-bold text-center mb-4">
+        Feature Section{" "}
+        <span className="text-primary-main text-3xl font-extrabold">
+          {foods.length}
+        </span>
+      </h2>
       <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-full md:w-11/12 gap-3  ">
         {foods.map((food) => (
           //     <p >{food.food_name}</p>

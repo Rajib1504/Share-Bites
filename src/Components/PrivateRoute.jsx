@@ -5,11 +5,11 @@ import Loader from "../components/loader";
 import { AuthContext } from "../Provider/AuthPovider";
 
 const PrivateRouter = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user, loader } = useContext(AuthContext);
 
   const location = useLocation();
   // console.log(location);
-  if (loading) {
+  if (loader) {
     return <Loader></Loader>;
   }
   if (user && user.email) {

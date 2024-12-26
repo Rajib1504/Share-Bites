@@ -9,11 +9,12 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import axios from "axios";
 export const AuthContext = createContext();
 const AuthPovider = ({ children }) => {
   const googleLogin = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
-  console.log(user);
+  // console.log(user);
   const [loader, setLoader] = useState(true);
   const registration = (email, password) => {
     setLoader(true);
@@ -29,7 +30,23 @@ const AuthPovider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoader(false);
+      console.log("state Capture", currentUser?.email);
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        axios
+          .post("http://localhost:9000/jwt", user, { withCredentials: true })
+          .then((result) => {
+            console.log("login token", result.data);
+            setLoader(false);
+          });
+      } else {
+        axios
+          .post("http://localhost:9000/logout", {}, { withCredentials: true })
+          .then((result) => {
+            console.log("log Out", result.data);
+            setLoader(false);
+          });
+      }
     });
     return () => {
       unsubscribe();
