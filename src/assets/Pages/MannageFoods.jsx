@@ -5,7 +5,7 @@ import { FaPen, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const MannageFoods = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setLoader } = useContext(AuthContext);
   const [allFoods, setAllFoods] = useState([]);
   const [openModal, setIsModalOpen] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
