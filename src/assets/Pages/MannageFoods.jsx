@@ -53,7 +53,13 @@ const MannageFoods = () => {
         `https://zomato-server-delta.vercel.app/food/update/${selectedFood._id}`,
         updatedData
       )
-      .then(() => {
+      .then((response) => {
+        setAllFoods((prevFoods) =>
+          prevFoods.map((food) =>
+            food._id === selectedFood._id ? { ...food, ...updatedData } : food
+          )
+        );
+
         Swal.fire({
           title: "Success!",
           text: "Food updated successfully",
@@ -71,9 +77,8 @@ const MannageFoods = () => {
       });
   };
 
-  // Handle delete
-  const handleDelete = (id) => {
-    Swal.fire({
+  const handleDelete = async (_id) => {
+    const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
       icon: "warning",
@@ -81,16 +86,27 @@ const MannageFoods = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios
-          .delete(`https://zomato-server-delta.vercel.app/myfood/${id}`)
-          .then(() => {
-            setAllFoods(allFoods.filter((food) => food._id !== id));
-            Swal.fire("Deleted!", "Your food has been deleted.", "success");
-          });
-      }
     });
+    if (result.isConfirmed) {
+      const { data } = await axios.delete(
+        `https://zomato-server-delta.vercel.app/myfood/${_id}`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      if (data.deletedCount > 0) {
+        setAllFoods((prevFoods) =>
+          prevFoods.filter((food) => food._id !== _id)
+        );
+        Swal.fire({
+          title: "Service Deleted!",
+          text: "Your service has been deleted successfully.",
+          icon: "success",
+          confirmButtonText: "Okay",
+        });
+      }
+    }
   };
 
   return (
@@ -186,10 +202,109 @@ const MannageFoods = () => {
       {openModal && selectedFood && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div
-            className="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg"
-            style={{ maxHeight: "90vh", overflowY: "auto" }}
+            className="bg-white rounded-lg shadow-lg p-6 w-full max-w-lg relative overflow-y-auto"
+            style={{ maxHeight: "90vh" }}
           >
-            {/* Modal Content */}
+            <button
+              onClick={closeModel}
+              className="absolute top-4 right-4 text-gray-500 text-2xl hover:text-gray-800"
+            >
+              &times;
+            </button>
+            <h2 className="text-xl font-bold text-center mb-4">Update Food</h2>
+            <form onSubmit={handleSubmit}>
+              {/* Food Name */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Food Name</label>
+                <input
+                  type="text"
+                  name="food_name"
+                  defaultValue={selectedFood?.food_name}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg bg-gray-100"
+                />
+              </div>
+              {/* Food Image */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Food Image URL</label>
+                <input
+                  type="text"
+                  name="food_image"
+                  defaultValue={selectedFood?.food_image}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg bg-gray-100"
+                />
+              </div>
+              {/* Quantity */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Quantity</label>
+                <input
+                  type="text"
+                  name="quantity"
+                  defaultValue={selectedFood?.quantity}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg bg-gray-100"
+                />
+              </div>
+              {/* Quantity type */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Quantity type</label>
+                <input
+                  type="text"
+                  name="quantity_type"
+                  defaultValue={selectedFood?.quantity_type}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg bg-gray-100"
+                />
+              </div>
+              {/* Status */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Food Status</label>
+                <input
+                  type="text"
+                  name="status"
+                  defaultValue={selectedFood?.status}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg bg-gray-100"
+                />
+              </div>
+              {/* Pickup Location */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Pickup Location</label>
+                <input
+                  type="text"
+                  name="pickup_location"
+                  defaultValue={selectedFood?.pickup_location}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg bg-gray-100"
+                />
+              </div>
+              {/* Expiry Date */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Expiry Date</label>
+                <input
+                  type="text"
+                  name="expiry_datetime"
+                  defaultValue={new Date(
+                    selectedFood?.expiry_datetime
+                  ).toLocaleString()}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg bg-gray-100"
+                />
+              </div>
+              {/* Additional Notes */}
+              <div className="mb-4">
+                <label className="block text-gray-700">Additional Notes</label>
+                <textarea
+                  name="additional_notes"
+                  defaultValue={selectedFood?.additional_notes}
+                  className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring focus:ring-orange-500"
+                  rows="3"
+                  placeholder="Add any additional notes..."
+                ></textarea>
+              </div>
+              {/* Submit Button */}
+              <button
+                // onClick={()=>{handleUpdate()}}
+                type="submit"
+                className="w-full px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600"
+              >
+                Save Changes
+              </button>
+            </form>
           </div>
         </div>
       )}

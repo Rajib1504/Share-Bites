@@ -52,7 +52,7 @@ const DetailsFood = () => {
       additional_notes,
       food_status,
     };
-    console.log(formData);
+    // console.log(formData);
     try {
       axios
         .post(

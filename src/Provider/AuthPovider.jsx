@@ -30,7 +30,7 @@ const AuthPovider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("state Capture", currentUser?.email);
+      // console.log("state Capture", currentUser?.email);
       if (currentUser?.email) {
         const user = { email: currentUser.email };
         axios
@@ -38,7 +38,7 @@ const AuthPovider = ({ children }) => {
             withCredentials: true,
           })
           .then((result) => {
-            console.log("login token", result.data);
+            // console.log("login token", result.data);
             setLoader(false);
           });
       } else {
@@ -49,7 +49,7 @@ const AuthPovider = ({ children }) => {
             { withCredentials: true }
           )
           .then((result) => {
-            console.log("log Out", result.data);
+            // console.log("log Out", result.data);
             setLoader(false);
           });
       }

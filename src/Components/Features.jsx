@@ -8,7 +8,7 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { Link } from "react-router-dom";
 const Features = () => {
   const [foods, setFoods] = useState([]);
-  console.log(foods);
+  // console.log(foods);
   useEffect(() => {
     axios
       .get("https://zomato-server-delta.vercel.app/foods/feturedFood")

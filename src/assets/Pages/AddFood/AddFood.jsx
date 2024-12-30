@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -34,18 +34,18 @@ const AddFood = () => {
       donator,
     };
 
-    console.log(formData);
+    // console.log(formData);
     axios
       .post("https://zomato-server-delta.vercel.app/food", formData)
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         Swal.fire({
           title: "Success!",
           text: "Food added successful",
           icon: "success",
           confirmButtonText: "Ok",
         });
-        // form.reset();
+        form.reset();
       })
       .catch((error) => {
         const errorm = error.message;
