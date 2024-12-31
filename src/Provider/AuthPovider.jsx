@@ -14,6 +14,7 @@ export const AuthContext = createContext();
 const AuthPovider = ({ children }) => {
   const googleLogin = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
+  const [signal, setSignal] = useState(null);
   // console.log(user);
   const [loader, setLoader] = useState(true);
   const registration = (email, password) => {
@@ -30,20 +31,26 @@ const AuthPovider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("state Capture", currentUser?.email);
+      // console.log("state Capture", currentUser?.email);
       if (currentUser?.email) {
         const user = { email: currentUser.email };
         axios
-          .post("http://localhost:9000/jwt", user, { withCredentials: true })
+          .post("https://zomato-server-delta.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then((result) => {
-            console.log("login token", result.data);
+            // console.log("login token", result.data);
             setLoader(false);
           });
       } else {
         axios
-          .post("http://localhost:9000/logout", {}, { withCredentials: true })
+          .post(
+            "https://zomato-server-delta.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
           .then((result) => {
-            console.log("log Out", result.data);
+            // console.log("log Out", result.data);
             setLoader(false);
           });
       }
@@ -63,6 +70,8 @@ const AuthPovider = ({ children }) => {
     user,
     setUser,
     setLoader,
+    signal,
+    setSignal,
     profileUpdate,
     loader,
     registration,

@@ -7,16 +7,20 @@ import Swal from "sweetalert2";
 
 const DetailsFood = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user, setSignal } = useContext(AuthContext);
   // console.log(user.email);
   const { id } = useParams();
   const [foods, setFoods] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:9000/food/${id}`).then((data) => {
-      setFoods(data.data);
-    });
+    axios
+      .get(`https://zomato-server-delta.vercel.app/food/${id}`, {
+        withCredentials: true,
+      })
+      .then((data) => {
+        setFoods(data.data);
+      });
   }, [id]);
 
   const openModal = () => setIsModalOpen(true);
@@ -48,24 +52,21 @@ const DetailsFood = () => {
       additional_notes,
       food_status,
     };
-    console.log(formData);
+    // console.log(formData);
     try {
       axios
-        .post(`http://localhost:9000/food/${id}`, formData)
-        .then((result) => console.log(result.data));
-      if ("insertedId") {
-        axios
-          .delete(`http://localhost:9000/food/${id}`)
-          .then((result) => console.log(result.data));
-
-        Swal.fire({
-          title: "Success!",
-          text: "Request accpted",
-          icon: "success",
-          confirmButtonText: "Ok",
+        .post(`https://zomato-server-delta.vercel.app/food/${id}`, formData, {
+          withCredentials: true,
+        })
+        .then((result) => {
+          Swal.fire({
+            title: "Success!",
+            text: "Request accpted",
+            icon: "success",
+            confirmButtonText: "Ok",
+          });
+          navigate("/myFoodRequest");
         });
-        navigate("/myFoodRequest");
-      }
     } catch (error) {
       const errorm = error.message;
       Swal.fire({
@@ -74,6 +75,7 @@ const DetailsFood = () => {
         text: errorm,
       });
     }
+    // setSignal(Math.random());
   };
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8 flex items-center justify-center">

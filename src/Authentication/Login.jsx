@@ -7,13 +7,13 @@ const Login = () => {
   const location = useLocation();
   const { user, setUser, setLoader, loginUser, popupLogin } =
     useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
 
     const regx = /^(?=.*[A-Z])(?=.*[a-z]).{6,}$/;
     if (!regx.test(password)) {
@@ -28,7 +28,7 @@ const Login = () => {
     loginUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         Swal.fire({
           title: "Success!",
           text: "Registration successful",

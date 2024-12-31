@@ -1,18 +1,30 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthPovider";
+import Loader from "../../../Components/Loader";
 
 const MyFoodRequest = () => {
   const [myFoods, setMyFoods] = useState([]);
+  const [loading, setLoading] = useState(false);
+  console.log(myFoods);
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
+    setLoading(true);
     if (user?.email) {
       axios
-        .get(`http://localhost:9000/food/requests/${user?.email}`)
-        .then((result) => setMyFoods(result.data));
+        .get(
+          `https://zomato-server-delta.vercel.app/food/requests/${user?.email}`,
+          {
+            withCredentials: true,
+          }
+        )
+        .then((result) => {
+          setMyFoods(result.data);
+          setLoading(false);
+        });
     }
-  }, [user]);
+  }, [user.email]);
 
   return (
     <div className="container mx-auto my-8 p-4">
@@ -31,51 +43,55 @@ const MyFoodRequest = () => {
               </th>
             </tr>
           </thead>
-          <tbody>
-            {myFoods.map((myFood) => (
-              <tr
-                key={myFood._id}
-                className="odd:bg-gray-50 even:bg-gray-100 hover:bg-gray-200"
-              >
-                <td className="px-2 sm:px-4 py-4">
-                  <div className="avatar">
-                    <div className="mask mask-squircle h-10 w-10 sm:h-12 sm:w-12">
-                      <img src={myFood?.food_image} alt={myFood?.food_name} />
+          {loading ? (
+            <Loader></Loader>
+          ) : (
+            <tbody>
+              {myFoods.map((myFood) => (
+                <tr
+                  key={myFood._id}
+                  className="odd:bg-gray-50 even:bg-gray-100 hover:bg-gray-200"
+                >
+                  <td className="px-2 sm:px-4 py-4">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-10 w-10 sm:h-12 sm:w-12">
+                        <img src={myFood?.food_image} alt={myFood?.food_name} />
+                      </div>
                     </div>
-                  </div>
-                </td>
-                <td className="px-2 sm:px-4 py-4">
-                  <div>
-                    <p className="font-semibold text-gray-800 text-sm sm:text-base">
-                      {myFood?.food_name}
+                  </td>
+                  <td className="px-2 sm:px-4 py-4">
+                    <div>
+                      <p className="font-semibold text-gray-800 text-sm sm:text-base">
+                        {myFood?.food_name}
+                      </p>
+                      <p className="text-xs sm:text-sm text-gray-500">
+                        {myFood?.pickup_location}
+                      </p>
+                    </div>
+                  </td>
+                  <td className="px-2 sm:px-4 py-4">
+                    <div>
+                      <p className="font-medium text-gray-800 text-sm sm:text-base">
+                        {myFood?.donator_name}
+                      </p>
+                      <p className="text-xs sm:text-sm text-gray-500">
+                        <span>{myFood?.donator_email}</span> |{" "}
+                        <span>{myFood?.expiry_date}</span>
+                      </p>
+                    </div>
+                  </td>
+                  <td className="px-2 sm:px-4 py-4 text-center">
+                    <span className="px-3 py-1 rounded-full text-white bg-orange-500 text-xs sm:text-sm">
+                      {myFood?.food_status || "N/A"}
+                    </span>
+                    <p className="text-xs sm:text-sm text-gray-500 mt-2">
+                      {myFood?.request_date}
                     </p>
-                    <p className="text-xs sm:text-sm text-gray-500">
-                      {myFood?.pickup_location}
-                    </p>
-                  </div>
-                </td>
-                <td className="px-2 sm:px-4 py-4">
-                  <div>
-                    <p className="font-medium text-gray-800 text-sm sm:text-base">
-                      {myFood?.donator_name}
-                    </p>
-                    <p className="text-xs sm:text-sm text-gray-500">
-                      <span>{myFood?.donator_email}</span> |{" "}
-                      <span>{myFood?.expiry_date}</span>
-                    </p>
-                  </div>
-                </td>
-                <td className="px-2 sm:px-4 py-4 text-center">
-                  <span className="px-3 py-1 rounded-full text-white bg-orange-500 text-xs sm:text-sm">
-                    {myFood?.food_status || "N/A"}
-                  </span>
-                  <p className="text-xs sm:text-sm text-gray-500 mt-2">
-                    {myFood?.request_date}
-                  </p>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
       </div>
     </div>

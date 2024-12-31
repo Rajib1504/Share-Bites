@@ -8,10 +8,10 @@ import { MdOutlineAccessTime } from "react-icons/md";
 import { Link } from "react-router-dom";
 const Features = () => {
   const [foods, setFoods] = useState([]);
-  console.log(foods);
+  // console.log(foods);
   useEffect(() => {
     axios
-      .get("http://localhost:9000/foods/feturedFood")
+      .get("https://zomato-server-delta.vercel.app/foods/feturedFood")
       .then((data) => setFoods(data.data));
   }, []);
   return (
