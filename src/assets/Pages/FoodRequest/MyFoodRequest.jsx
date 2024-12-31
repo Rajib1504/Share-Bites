@@ -19,14 +19,10 @@ const MyFoodRequest = () => {
             withCredentials: true,
           }
         )
-<<<<<<< HEAD
         .then((result) => {
           setMyFoods(result.data);
           setLoading(false);
         });
-=======
-        .then((result) => setMyFoods(result.data));
->>>>>>> 2871bfec8e663344bf954ec54a4c515369302338
     }
   }, [user.email]);
 

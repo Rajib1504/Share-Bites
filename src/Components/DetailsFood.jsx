@@ -55,7 +55,6 @@ const DetailsFood = () => {
     // console.log(formData);
     try {
       axios
-<<<<<<< HEAD
         .post(`https://zomato-server-delta.vercel.app/food/${id}`, formData, {
           withCredentials: true,
         })
@@ -67,24 +66,6 @@ const DetailsFood = () => {
             confirmButtonText: "Ok",
           });
           navigate("/myFoodRequest");
-=======
-        .post(
-          `https://zomato-server-delta.vercel.app/food/${id}`,
-          { withCredentials: true },
-          formData
-        )
-        .then((result) => console.log(result.data));
-      if ("insertedId") {
-        axios
-          .delete(`https://zomato-server-delta.vercel.app/food/${id}`)
-          .then((result) => console.log(result.data));
-
-        Swal.fire({
-          title: "Success!",
-          text: "Request accpted",
-          icon: "success",
-          confirmButtonText: "Ok",
->>>>>>> 2871bfec8e663344bf954ec54a4c515369302338
         });
     } catch (error) {
       const errorm = error.message;
