@@ -1,103 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zomato Clone Backend - README</title>
-</head>
-<body>
-  <h1>Zomato Clone Backend</h1>
+# Zomato Clone Backend 🍔
 
-  <h2>Purpose</h2>
-  <p>
-    This backend is part of the Zomato Clone project. It serves as the server-side application to manage user authentication, food items, donation requests, and more. The project is designed to provide a seamless experience for food donators and requestors.
-  </p>
+This backend is part of the Zomato Clone project, designed to manage food donations and requests. It provides an efficient server-side application for handling user authentication, CRUD operations for food items, donation requests, and role-based access control.
 
-  <h2>Live URL</h2>
-  <p>
-    The live version of the frontend connected to this backend is hosted at: 
-    <a href="https://zomato-37f5f.web.app" target="_blank">https://zomato-37f5f.web.app</a>
-  </p>
+## 🚀 Project Overview
+The Zomato Clone Backend enables users to manage food donations and requests in a secure environment. It allows users to create, update, and delete food items, search for food by name, and request donations. The platform supports role-based access control, ensuring that only authorized users can manage donations. The backend also implements secure authentication via JSON Web Tokens (JWT) and stores sensitive data using cookies.
 
-  <h2>Key Features</h2>
-  <ul>
-    <li>User authentication with JSON Web Tokens (JWT).</li>
-    <li>CRUD operations for food items.</li>
-    <li>Search functionality to filter food items by name.</li>
-    <li>Request food donations with user-specific data handling.</li>
-    <li>Role-based access control for managing and deleting donations.</li>
-    <li>Secure token handling using cookies.</li>
-  </ul>
+This backend is connected to a frontend hosted at [Zomato Clone](https://zomato-37f5f.web.app), providing a complete end-to-end solution for food donation management.
 
-  <h2>Technologies Used</h2>
-  <ul>
-    <li>Node.js</li>
-    <li>Express.js</li>
-    <li>MongoDB (with MongoClient)</li>
-    <li>JSON Web Tokens (JWT) for authentication</li>
-    <li>Cookie-parser for handling cookies</li>
-    <li>CORS for handling cross-origin requests</li>
-    <li>dotenv for environment variable management</li>
-  </ul>
+## 🔗 Live Project URL
+- The live version of the frontend connected to this backend is hosted at:  
+  [Zomato Clone](https://zomato-37f5f.web.app)
 
-  <h2>NPM Packages</h2>
-  <ul>
-    <li><code>express</code> - Web framework for Node.js</li>
-    <li><code>jsonwebtoken</code> - For creating and verifying JWT tokens</li>
-    <li><code>cookie-parser</code> - For parsing cookies</li>
-    <li><code>cors</code> - For managing Cross-Origin Resource Sharing</li>
-    <li><code>dotenv</code> - For managing environment variables</li>
-    <li><code>mongodb</code> - For interacting with MongoDB</li>
-  </ul>
+## ⚡ Key Features
+- **User Authentication**: Secure user authentication using JWT tokens.
+- **CRUD Operations**: Full support for CRUD operations on food items (Create, Read, Update, Delete).
+- **Search Functionality**: Ability to filter food items by name for easier search.
+- **Food Donations**: Users can request food donations, with user-specific data handling.
+- **Role-Based Access Control**: Different user roles (admin and regular users) with access control for managing and deleting food items.
+- **Secure Token Handling**: JWT tokens are stored securely using cookies for authentication.
 
-  <h2>Setup Instructions</h2>
-  <ol>
-    <li>Clone this repository:
-      <pre><code>git clone &lt;repository-url&gt;</code></pre>
-    </li>
-    <li>Navigate to the project directory and install dependencies:
-      <pre><code>npm install</code></pre>
-    </li>
-    <li>Create a <code>.env</code> file in the root directory and add the following:
-      <pre><code>
-PORT=9000
-DB_user=&lt;your-mongodb-username&gt;
-DB_pass=&lt;your-mongodb-password&gt;
-JWT_SECRET=&lt;your-jwt-secret-key&gt;
-NODE_ENV=development
-      </code></pre>
-    </li>
-    <li>Start the development server:
-      <pre><code>npm start</code></pre>
-    </li>
-  </ol>
+## 🛠️ Technologies Used
+The backend is built using the following technologies:
+- **Node.js**: Server-side JavaScript runtime environment.
+- **Express.js**: Web framework for building the API.
+- **MongoDB**: NoSQL database for storing food and user data.
+- **JWT (JSON Web Tokens)**: For secure user authentication.
+- **Cookie-parser**: For parsing cookies and managing secure tokens.
+- **CORS**: For handling cross-origin requests.
+- **dotenv**: For managing environment variables and sensitive data.
 
-  <h2>Endpoints</h2>
-  <h3>Authentication</h3>
-  <ul>
-    <li><code>POST /jwt</code> - Generate a JWT token</li>
-    <li><code>POST /logout</code> - Logout and clear the token</li>
-  </ul>
+## 📦 NPM Packages Used
+- `express` - Web framework for Node.js.
+- `jsonwebtoken` - For creating and verifying JWT tokens.
+- `cookie-parser` - For parsing cookies to handle JWT tokens.
+- `cors` - For handling Cross-Origin Resource Sharing.
+- `dotenv` - For managing environment variables.
+- `mongodb` - MongoDB driver for interacting with the database.
 
-  <h3>Food Management</h3>
-  <ul>
-    <li><code>POST /food</code> - Add a new food item</li>
-    <li><code>GET /food/sortedFoods</code> - Fetch all available food items, sorted by expiry date</li>
-    <li><code>GET /foods/feturedFood</code> - Fetch top 6 featured food items</li>
-    <li><code>GET /food/:id</code> - Fetch details of a specific food item</li>
-    <li><code>PUT /food/update/:id</code> - Update a specific food item</li>
-    <li><code>DELETE /food/:id</code> - Delete a specific food item</li>
-  </ul>
+## 📝 Setup Instructions
 
-  <h3>Food Requests</h3>
-  <ul>
-    <li><code>POST /food/:id</code> - Request a specific food item</li>
-    <li><code>GET /food/requests/:email</code> - Fetch food requests for a specific user</li>
-  </ul>
+To set up this backend locally, follow the steps below:
 
-  <h2>License</h2>
-  <p>
-    This project is open-source and licensed under the MIT License.
-  </p>
-</body>
-</html>
+1. **Clone the repository**:
+    ```bash
+    git clone <repository-url>
+    ```
+
+2. **Navigate to the project directory** and install dependencies:
+    ```bash
+    cd zomato-clone-backend
+    npm install
+    ```
+
+3. **Create a `.env` file** in the root directory and add the following environment variables:
+    ```bash
+    PORT=9000
+    DB_user=<your-mongodb-username>
+    DB_pass=<your-mongodb-password>
+    JWT_SECRET=<your-jwt-secret-key>
+    NODE_ENV=development
+    ```
+
+4. **Start the development server**:
+    ```bash
+    npm start
+    ```
+
+5. **Visit `http://localhost:9000`** to access the backend locally.
+
+## 🧑‍💻 Endpoints
+
+### Authentication
+- **POST `/jwt`**: Generate a JWT token for user authentication.
+- **POST `/logout`**: Logout and clear the JWT token.
+
+### Food Management
+- **POST `/food`**: Add a new food item.
+- **GET `/food/sortedFoods`**: Fetch all available food items, sorted by expiry date.
+- **GET `/foods/featuredFood`**: Fetch top 6 featured food items.
+- **GET `/food/:id`**: Fetch details of a specific food item.
+- **PUT `/food/update/:id`**: Update a specific food item.
+- **DELETE `/food/:id`**: Delete a specific food item.
+
+### Food Requests
+- **POST `/food/:id`**: Request a specific food item.
+- **GET `/food/requests/:email`**: Fetch food requests for a specific user based on their email.
+
+## 🔐 License
+This project is open-source and licensed under the **MIT License**. You are free to use, modify, and distribute this code with proper attribution.
+
+## 🎉 Acknowledgements
+Thank you for exploring the **Zomato Clone Backend**! If you have any questions or suggestions, feel free to reach out.
+
+---
+
+For further details, please refer to the frontend repository or contact the project maintainers.
+
+### 📬 Contact
+- **Email**: rajibsardar1542@gmail.com
