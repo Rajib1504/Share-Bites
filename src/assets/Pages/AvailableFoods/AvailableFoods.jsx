@@ -9,37 +9,34 @@ import { AuthContext } from "../../../Provider/AuthPovider";
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
-  const { user } = useContext(AuthContext);
-  // console.log(foods);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
-  // console.log(search);
-  // console.log(foods);
+  const { user } = useContext(AuthContext);
+
   useEffect(() => {
-    axios
-      .get("https://zomato-server-delta.vercel.app/food/sortedFoods")
-      .then((data) => {
-        const setDate = data.data.sort(
+    const fetchData = async () => {
+      if (!user) return; // Ensure user exists before fetching
+      setLoading(true);
+      try {
+        const response = await axios.get(
+          `https://zomato-server-delta.vercel.app/food/sortedFoods?searchParams=${search}`
+        );
+        const sortedData = response.data.sort(
           (a, b) => new Date(a.expiry_datetime) - new Date(b.expiry_datetime)
         );
-
-        setFoods(data.setDate);
-      });
-  }, [user]);
-  // sreach
-  useEffect(() => {
-    setLoading(true);
-    fetch(
-      `https://zomato-server-delta.vercel.app/food/sortedFoods?searchParams=${search}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setFoods(data);
+        setFoods(sortedData);
+      } catch (error) {
+        console.error("Error fetching food data:", error);
+      } finally {
         setLoading(false);
-      });
-  }, [search]);
+      }
+    };
+
+    fetchData();
+  }, [user, search]); // Dependency array now ensures proper re-fetching
+
   return (
-    <div className=" mt-4 min-h-screen">
+    <div className="mt-4 min-h-screen">
       <h2 className="text-2xl font-bold text-primary-main text-center mb-4">
         Feature Section{" "}
         <span className="text-black text-3xl font-extrabold">
@@ -70,58 +67,48 @@ const AvailableFoods = () => {
       </div>
 
       {loading ? (
-        <Loader></Loader>
+        <Loader />
       ) : (
         <div>
           {foods?.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto w-full md:w-11/12 gap-3  ">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto w-full md:w-11/12 gap-3">
               {foods.map((food) => (
-                //     <p >{food.food_name}</p>
                 <div
                   key={food._id}
                   className="hover:border-2 pb-3 bg-primary-default hover:border-gray-300 hover:shadow-md duration-100 lg:w-90 w-full rounded-xl hover:p-3 flex flex-col gap-1 items-center justify-between"
                 >
-                  {/* image  */}
                   <figure className="w-full">
                     <img
-                      src={`${food.food_image}`}
-                      alt="Shoes"
+                      src={food.food_image}
+                      alt={food.food_name}
                       className="rounded-xl h-60 object-cover w-full"
                     />
                   </figure>
-                  {/* title  */}
-                  <div className="text-xl py-2 font-bold  hover:text-primary-main">
+                  <div className="text-xl py-2 font-bold hover:text-primary-main">
                     {food.food_name}
                   </div>
-                  {/* text  */}
-                  <div className="flex justify-between  px-4 w-full items-center">
-                    <div>
-                      <div className="flex justify-center items-center gap-2">
-                        <p className="font-bold text-primary-main">Quantity:</p>
-                        <p> {food.quantity}</p>
-                        <p> {food.quantity_type}</p>
-                      </div>
+                  <div className="flex justify-between px-4 w-full items-center">
+                    <div className="flex justify-center items-center gap-2">
+                      <p className="font-bold text-primary-main">Quantity:</p>
+                      <p>{food.quantity}</p>
+                      <p>{food.quantity_type}</p>
                     </div>
                     <div className="rounded-full p-1 px-3 bg-green-500 hover:bg-green-600 font-semibold">
                       {food.status}
                     </div>
-                    {/* <div className="rounded-full p-1 px-3 bg-primary-sub hover:bg-primary-main font-semibold">
-             {food.status}
-           </div> */}
                   </div>
-                  {/* timings  */}
                   <div className="flex justify-center flex-wrap-reverse items-center gap-2">
                     <span className="flex items-center gap-1">
-                      <MdOutlineAccessTime className=" text-primary-main" />{" "}
+                      <MdOutlineAccessTime className="text-primary-main" />
                       <p className="text-sm">{food.expiry_datetime}</p>
                     </span>
                     <span className="flex items-center gap-1">
-                      <IoLocationOutline className=" text-primary-main" />
+                      <IoLocationOutline className="text-primary-main" />
                       <p className="text-sm">{food.pickup_location}</p>
                     </span>
                   </div>
                   <Link
-                    to={`/food/${food?._id}`}
+                    to={`/food/${food._id}`}
                     className="btn btn-wide mx-auto px-4 py-2 mt-4 text-white bg-gradient-to-r from-[#f6a078] to-primary-main rounded-lg hover:from-[#f86300] hover:to-[#f4993f] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
                   >
                     View Details <GiFrayedArrow />
@@ -130,18 +117,17 @@ const AvailableFoods = () => {
               ))}
             </div>
           ) : (
-            <div className="flex  my-5 min-h-80  rounded-lg justify-center items-center gap-2 flex-col">
+            <div className="flex my-5 min-h-80 rounded-lg justify-center items-center gap-2 flex-col">
               <img
                 src="https://i.ibb.co/fNHCKcb/error.webp"
                 className="w-32"
-                alt=""
+                alt="No Data"
               />
               <h1 className="text-primary font-bold text-3xl">No Data Found</h1>
             </div>
           )}
         </div>
       )}
-      {/* show all button  */}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import {
   Phone,
   Mail,
   MapPin,
+  Linkedin,
 } from "lucide-react";
 
 const Footer = () => {
@@ -65,19 +66,22 @@ const Footer = () => {
             <h3 className="font-semibold text-gray-800 text-lg">Follow Us</h3>
             <div className="flex gap-6">
               <a
-                href="#"
+                href="https://www.linkedin.com/in/dev-rajib"
+                target="_blank"
                 className="text-gray-600 hover:text-primary-main transition-colors"
               >
-                <Instagram className="w-6 h-6 sm:w-7 sm:h-7" />
+                <Linkedin className="w-6 h-6 sm:w-7 sm:h-7" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=100076870941377"
+                target="_blank"
                 className="text-gray-600 hover:text-primary-main transition-colors"
               >
                 <Facebook className="w-6 h-6 sm:w-7 sm:h-7" />
               </a>
               <a
-                href="#"
+                href="https://x.com/radhanath108"
+                target="_blank"
                 className="text-gray-600 hover:text-primary-main transition-colors"
               >
                 <Twitter className="w-6 h-6 sm:w-7 sm:h-7" />

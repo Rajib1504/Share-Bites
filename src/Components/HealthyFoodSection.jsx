@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HealthyFoodSection = () => {
   return (
@@ -27,12 +28,12 @@ const HealthyFoodSection = () => {
           about the overall experience. Our staff, renowned for their warmth and
           dedication, strives to make every visit an unforgettable event.
         </p>
-        <a
-          href="#footer"
+        <Link
+          to={"/aboutUs"}
           className="px-6 py-3 bg-[#FF5200] text-white font-medium rounded-lg hover:bg-[#e04700] shadow-md transition duration-300"
         >
           More About Us
-        </a>
+        </Link>
       </div>
     </div>
   );

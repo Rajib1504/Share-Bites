@@ -35,6 +35,20 @@ const Navbar = () => {
           Available Foods
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/aboutUs"
+          className={({ isActive }) =>
+            `relative text-black font-medium transition duration-300 ${
+              isActive
+                ? "after:content-[''] after:block after:h-[2px] after:w-full after:bg-orange-500 after:absolute after:bottom-[-2px] after:left-0"
+                : ""
+            } hover:after:content-[''] hover:after:block hover:after:h-[2px] hover:after:w-full hover:after:bg-orange-500 hover:after:absolute hover:after:bottom-[-2px] hover:after:left-0`
+          }
+        >
+          About Us
+        </NavLink>
+      </li>
       {user && (
         <>
           <li>
