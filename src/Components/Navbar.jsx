@@ -85,7 +85,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-primary-default">
+    <div className="bg-primary-default sticky top-0 duration-100 ">
       <div className="navbar lg:w-11/12 mx-auto w-full z-50 p-0 justify-between items-center">
         {/* Left Section */}
         <div className="flex items-center">
