@@ -1,5 +1,6 @@
 import React from "react";
 import { IoArrowForwardSharp } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 const BrowseUs = () => {
   return (
@@ -29,8 +30,8 @@ const BrowseUs = () => {
               In the new era of technology we look in the future with certainty
               and pride for our life.
             </p>
-            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4">
-              <p>Explore menu</p>
+            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4 hover:underline ">
+              <Link to={"/sortedFoods"}>Explore menu</Link>
               <IoArrowForwardSharp className="text-xl mt-1" />
             </div>
           </div>
@@ -57,8 +58,8 @@ const BrowseUs = () => {
               In the new era of technology we look in the future with certainty
               and pride for our life.
             </p>
-            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4">
-              <p>Explore menu</p>
+            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4 hover:underline">
+              <Link to={"/sortedFoods"}>Explore menu</Link>
               <IoArrowForwardSharp className="text-xl mt-1" />
             </div>
           </div>
@@ -83,8 +84,8 @@ const BrowseUs = () => {
               In the new era of technology we look in the future with certainty
               and pride for our life.
             </p>
-            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4">
-              <p>Explore menu</p>
+            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4 hover:underline">
+              <Link to={"/sortedFoods"}>Explore menu</Link>
               <IoArrowForwardSharp className="text-xl mt-1" />
             </div>
           </div>
@@ -109,8 +110,8 @@ const BrowseUs = () => {
               In the new era of technology we look in the future with certainty
               and pride for our life.
             </p>
-            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4">
-              <p>Explore menu</p>
+            <div className="text-[#FF5200] hover:text-[#e94a00] flex gap-1 justify-center items-center font-semibold mt-4 hover:underline">
+              <Link to={"/sortedFoods"}>Explore menu</Link>
               <IoArrowForwardSharp className="text-xl mt-1" />
             </div>
           </div>
