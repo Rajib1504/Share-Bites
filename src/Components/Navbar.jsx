@@ -87,7 +87,7 @@ const Navbar = () => {
         <div className="flex items-center">
           {/* Mobile Dropdown */}
           <div className="dropdown lg:hidden">
-            <button tabIndex={0} className="btn btn-ghost">
+            <button tabIndex={0} className="btn btn-ghost ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -105,20 +105,22 @@ const Navbar = () => {
             </button>
             <ul
               tabIndex={0}
-              className="menu menu-sm z-10 dropdown-content bg-[#272626e1] text-white font-semibold rounded-box mt-3 w-36 p-2 shadow"
+              className="menu menu-sm z-10 dropdown-content bg-white text-gray-700 font-semibold rounded-box mt-3 w-36 p-2 shadow"
             >
               {links}
             </ul>
           </div>
           {/* Logo */}
-          <div className="flex items-center gap-1">
-            <img
-              className="w-14 hidden sm:block"
-              src={`https://i.ibb.co/dpSMLyd/Brown-Simple-Circle-Restaurant-Logo-photoaidcom-cropped.png`}
-              alt="Logo"
-            />
-            <h2 className="text-lg sm:text-2xl font-bold">Share-Bites</h2>
-          </div>
+          <Link to={"/"}>
+            <div className="flex items-center gap-1">
+              <img
+                className="w-14 hidden sm:block"
+                src={`https://i.ibb.co/dpSMLyd/Brown-Simple-Circle-Restaurant-Logo-photoaidcom-cropped.png`}
+                alt="Logo"
+              />
+              <h2 className="text-lg sm:text-2xl font-bold">Share-Bites</h2>
+            </div>
+          </Link>
         </div>
 
         {/* Center Navigation */}

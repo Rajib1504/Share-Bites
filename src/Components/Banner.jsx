@@ -27,7 +27,7 @@ const Banner = () => {
             className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#FF7A45] to-transparent"></div>
-          <div className="absolute top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
+          <div className="absolute lg:w-11/12 mx-auto top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
             <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold">
               Delicious Pasta
             </h2>
@@ -59,7 +59,7 @@ const Banner = () => {
             className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#FF7A45] to-transparent"></div>
-          <div className="absolute top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
+          <div className="absolute lg:w-11/12 mx-auto top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
             <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold">
               Juicy Burgers
             </h2>
@@ -91,7 +91,7 @@ const Banner = () => {
             className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#FF7A45] to-transparent"></div>
-          <div className="absolute top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
+          <div className="absolute lg:w-11/12 mx-auto top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
             <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold">
               Delightful Cheesecake
             </h2>
@@ -123,7 +123,7 @@ const Banner = () => {
             className="w-full h-64 sm:h-80 md:h-96 lg:h-[500px] object-cover object-bottom"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-[#FF7A45] to-transparent"></div>
-          <div className="absolute top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
+          <div className="absolute lg:w-11/12 mx-auto top-1/2 left-10 transform -translate-y-[50%] text-left text-white">
             <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold">
               Tropical Smoothie
             </h2>
