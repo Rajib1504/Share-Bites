@@ -3,6 +3,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "../../node_modules/swiper/swiper-bundle.min.css";
 import { IoFastFood, IoCafe } from "react-icons/io5";
+import { Link } from "react-router-dom";
 const Banner = () => {
   return (
     <Swiper
@@ -36,15 +37,19 @@ const Banner = () => {
               authentic flavors and top-quality ingredients.
             </p>
             <div className="flex items-center gap-4">
-              <button className="mt-6 px-4 py-3 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
                   <IoFastFood className="text-white" />
-                  <p>Order Now</p>
+                  <Link to={"/sortedFoods"}>
+                    <p>Order Now</p>
+                  </Link>
                 </div>
               </button>
-              <button className="mt-6 px-4 py-3 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
-                  <p>View Menu</p>
+                  <Link to={"/myFoodRequest"}>
+                    <p>View Menu</p>
+                  </Link>
                 </div>
               </button>
             </div>
@@ -68,15 +73,19 @@ const Banner = () => {
               unmatched flavors.
             </p>
             <div className="flex items-center gap-4">
-              <button className="mt-6 px-4 py-3 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
                   <IoFastFood className="text-white" />
-                  <p>Order Now</p>
+                  <Link to={"/sortedFoods"}>
+                    <p>Order Now</p>
+                  </Link>
                 </div>
               </button>
-              <button className="mt-6 px-4 py-3 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
-                  <p>View Menu</p>
+                  <Link to={"/myFoodRequest"}>
+                    <p>View Menu</p>
+                  </Link>
                 </div>
               </button>
             </div>
@@ -100,15 +109,21 @@ const Banner = () => {
               cheesecake, topped with fresh fruits.
             </p>
             <div className="flex items-center gap-4">
-              <button className="mt-6 px-4 py-3 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
                   <IoCafe className="text-white" />
-                  <p>Order Now</p>
+                  <Link to={"/sortedFoods"}>
+                    <Link to={"/sortedFoods"}>
+                      <p>Order Now</p>
+                    </Link>
+                  </Link>
                 </div>
               </button>
-              <button className="mt-6 px-4 py-3 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
-                  <p>View Menu</p>
+                  <Link to={"/myFoodRequest"}>
+                    <p>View Menu</p>
+                  </Link>
                 </div>
               </button>
             </div>
@@ -132,15 +147,19 @@ const Banner = () => {
               fresh fruits and natural ingredients.
             </p>
             <div className="flex items-center gap-4">
-              <button className="mt-6 px-4 py-3 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 bg-[#FF4500] hover:bg-[#D73C00] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
                   <IoCafe className="text-white" />
-                  <p>Order Now</p>
+                  <Link to={"/sortedFoods"}>
+                    <p>Order Now</p>
+                  </Link>
                 </div>
               </button>
-              <button className="mt-6 px-4 py-3 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
+              <button className="mt-6 md:px-4 md:py-3 lg:px-4 lg:py-3 px-3 py-2 border-2 border-[#FF4500] hover:bg-[#F5E2D7] hover:text-[#FF4500] text-white font-semibold rounded-lg text-sm sm:text-base lg:text-lg transition-all transform hover:scale-105 shadow-md">
                 <div className="flex gap-2 items-center">
-                  <p>View Menu</p>
+                  <Link to={"/myFoodRequest"}>
+                    <p>View Menu</p>
+                  </Link>
                 </div>
               </button>
             </div>

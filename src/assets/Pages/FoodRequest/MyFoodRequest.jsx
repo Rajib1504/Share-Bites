@@ -32,20 +32,23 @@ const MyFoodRequest = () => {
         My Food Requests ({myFoods.length})
       </h2>
       <div className="overflow-x-auto bg-white shadow-lg rounded-lg">
-        <table className="table-auto w-full border-collapse">
-          <thead className="bg-gray-800 text-white">
-            <tr>
-              <th className="px-2 sm:px-4 py-2 text-left">Image</th>
-              <th className="px-2 sm:px-4 py-2 text-left">Details</th>
-              <th className="px-2 sm:px-4 py-2 text-left">Donator</th>
-              <th className="px-2 sm:px-4 py-2 text-left lg:text-center">
-                Status
-              </th>
-            </tr>
-          </thead>
-          {loading ? (
+        {loading ? (
+          <div className="flex w-full mx-auto justify-center items-center">
             <Loader></Loader>
-          ) : (
+          </div>
+        ) : (
+          <table className="table-auto w-full border-collapse">
+            <thead className="bg-gray-800 text-white">
+              <tr>
+                <th className="px-2 sm:px-4 py-2 text-left">Image</th>
+                <th className="px-2 sm:px-4 py-2 text-left">Details</th>
+                <th className="px-2 sm:px-4 py-2 text-left">Donator</th>
+                <th className="px-2 sm:px-4 py-2 text-left lg:text-center">
+                  Status
+                </th>
+              </tr>
+            </thead>
+
             <tbody>
               {myFoods.map((myFood) => (
                 <tr
@@ -91,8 +94,8 @@ const MyFoodRequest = () => {
                 </tr>
               ))}
             </tbody>
-          )}
-        </table>
+          </table>
+        )}
       </div>
     </div>
   );
