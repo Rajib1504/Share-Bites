@@ -4,7 +4,7 @@ import { IoArrowForwardSharp } from "react-icons/io5";
 const BrowseUs = () => {
   return (
     <div>
-      <h1 className="md:text-3xl text-2xl lg:text-4xl font-semibold text-center my-8 hover:text-primary-main hover:underline">
+      <h1 className="md:text-3xl text-2xl lg:text-4xl font-semibold text-center my-8 text-primary-main">
         Browse Our Menu
       </h1>
       <div className=" w-full mx-auto md:w-full lg:w-5/6 flex flex-wrap justify-around p-4 items-center gap-6">

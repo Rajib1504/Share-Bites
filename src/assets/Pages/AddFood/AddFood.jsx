@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../../Provider/AuthPovider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
+  const [loader, setLoader] = useState(false);
+
   // console.log(user);
   const handleSubmit = (e) => {
+    setLoader(true);
     e.preventDefault();
     const form = e.target;
     const food_name = form.food_name.value;
@@ -45,6 +48,7 @@ const AddFood = () => {
           icon: "success",
           confirmButtonText: "Ok",
         });
+        setLoader(false);
         form.reset();
       })
       .catch((error) => {
@@ -54,6 +58,7 @@ const AddFood = () => {
           title: "Oops...",
           text: errorm,
         });
+        setLoader(false);
       });
   };
   return (
@@ -281,7 +286,13 @@ const AddFood = () => {
           type="submit"
           className="w-full px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg hover:bg-orange-600 focus:outline-none"
         >
-          Add Food
+          {loader ? (
+            <div className="disabled">
+              <span className="loading loading-spinner loading-xs"></span>
+            </div>
+          ) : (
+            <> Add Food</>
+          )}
         </button>
       </form>
     </div>

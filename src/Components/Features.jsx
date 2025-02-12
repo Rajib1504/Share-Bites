@@ -17,12 +17,9 @@ const Features = () => {
   return (
     <div className="">
       <h1 className="text-4xl font-semibold text-center my-8">
-        <p className=" hover:text-primary-main hover:underline">
-          {" "}
-          Feature section
-        </p>{" "}
+        <p className=" text-primary-main"> Feature section</p>{" "}
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-full md:w-11/12 gap-3  ">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto w-full md:w-11/12 gap-3  ">
         {foods.map((food) => (
           //     <p >{food.food_name}</p>
           <div
@@ -38,7 +35,7 @@ const Features = () => {
               />
             </figure>
             {/* title  */}
-            <div className="text-xl py-2 font-bold  hover:text-primary-main">
+            <div className="text-xl py-2 font-bold px-2 text-center ">
               {food.food_name}
             </div>
             {/* text  */}

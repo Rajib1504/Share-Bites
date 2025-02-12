@@ -38,9 +38,9 @@ const AvailableFoods = () => {
   }, [search]);
   return (
     <div className=" mt-4">
-      <h2 className="text-2xl font-bold text-center mb-4">
+      <h2 className="text-2xl font-bold text-primary-main text-center mb-4">
         Feature Section{" "}
-        <span className="text-primary-main text-3xl font-extrabold">
+        <span className="text-black text-3xl font-extrabold">
           {foods?.length}
         </span>
       </h2>
@@ -120,7 +120,7 @@ const AvailableFoods = () => {
                   </div>
                   <Link
                     to={`/food/${food?._id}`}
-                    className="btn btn-wide mx-auto px-4 py-2 mt-4 text-white bg-gradient-to-r from-[#f6a078] to-[#902f02] rounded-lg hover:from-[#f86300] hover:to-[#f4993f] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
+                    className="btn btn-wide mx-auto px-4 py-2 mt-4 text-white bg-gradient-to-r from-[#f6a078] to-primary-main rounded-lg hover:from-[#f86300] hover:to-[#f4993f] transform hover:scale-105 transition duration-300 ease-in-out hover:shadow-lg focus:outline-none flex justify-center items-center font-semibold gap-3"
                   >
                     View Details <GiFrayedArrow />
                   </Link>
