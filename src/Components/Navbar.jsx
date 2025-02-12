@@ -148,7 +148,7 @@ const Navbar = () => {
               </div>
               <button
                 onClick={logOut}
-                className="flex justify-center items-center btn btn-sm text-primary-sub bg-transparent rounded-xl border-2 border-primary-sub hover:bg-primary-sub hover:text-white transition duration-300 ease-in-out shadow-md"
+                className="flex justify-center items-center btn btn-sm text-primary-sub bg-transparent rounded-xl border-2 border-primary-sub hover:bg-primary-sub hover:text-white transition duration-300 ease-in-out bg-white shadow-md"
               >
                 Log out
               </button>

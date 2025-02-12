@@ -110,7 +110,7 @@ const MannageFoods = () => {
   };
 
   return (
-    <div className="container mx-auto my-8 p-4">
+    <div className="container min-h-screen mx-auto my-8 p-4">
       <h2 className="text-2xl font-semibold text-gray-800 mb-6">
         My Total Foods: {allFoods.length}
       </h2>
