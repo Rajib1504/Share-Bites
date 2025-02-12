@@ -1,13 +1,15 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GiFrayedArrow } from "react-icons/gi";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlineAccessTime } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Loader from "../../../Components/Loader";
+import { AuthContext } from "../../../Provider/AuthPovider";
 
 const AvailableFoods = () => {
   const [foods, setFoods] = useState([]);
+  const { user } = useContext(AuthContext);
   // console.log(foods);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,7 +25,7 @@ const AvailableFoods = () => {
 
         setFoods(data.setDate);
       });
-  }, []);
+  }, [user]);
   // sreach
   useEffect(() => {
     setLoading(true);
@@ -37,7 +39,7 @@ const AvailableFoods = () => {
       });
   }, [search]);
   return (
-    <div className=" mt-4">
+    <div className=" mt-4 min-h-screen">
       <h2 className="text-2xl font-bold text-primary-main text-center mb-4">
         Feature Section{" "}
         <span className="text-black text-3xl font-extrabold">
@@ -72,7 +74,7 @@ const AvailableFoods = () => {
       ) : (
         <div>
           {foods?.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-auto w-full md:w-11/12 gap-3  ">
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto w-full md:w-11/12 gap-3  ">
               {foods.map((food) => (
                 //     <p >{food.food_name}</p>
                 <div
