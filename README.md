@@ -1,6 +1,6 @@
 # Zomato Clone Backend 🍔 
 
-This backend is part of the Zomato Clone project, designed to manage food donations and requests. It provides an efficient server-side application for handling user authentication, CRUD operations for food items, donation requests, and role-based access control.
+This backend is part of the Zomato Clone project, designed to manage food donations and requests. It provides an efficient server-side application for handling user authentication, CRUD operations for food items, donation requests, and role-based access control. 
 
 ## 🚀 Project Overview
 The Zomato Clone Backend enables users to manage food donations and requests in a secure environment. It allows users to create, update, and delete food items, search for food by name, and request donations. The platform supports role-based access control, ensuring that only authorized users can manage donations. The backend also implements secure authentication via JSON Web Tokens (JWT) and stores sensitive data using cookies.
